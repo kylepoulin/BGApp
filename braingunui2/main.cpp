@@ -6,11 +6,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    qRegisterMetaType< cv::Mat >("cv::Mat");
     MainWindow w;
-    ImgCreate c;
+//    ImgCreate c;
 
-    QObject::connect(&c,SIGNAL(sendImg(const cv::Mat&)), &w, SLOT(imageShow(const cv::Mat&)));
-    QObject::connect(&w,SIGNAL(launchSys()), &c, SLOT(launch()));
     w.show();
 
     return a.exec();

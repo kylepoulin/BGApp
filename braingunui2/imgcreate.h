@@ -9,12 +9,14 @@ class ImgCreate : public QObject
     Q_OBJECT
 public:
     explicit ImgCreate(QObject *parent = 0);
+    ~ImgCreate();
 
 signals:
     void sendImg(const cv::Mat&);
+    void resultReady();
 
 public slots:
-    void launch();
+    void doWork();
 
 private:
 

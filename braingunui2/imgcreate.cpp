@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <QThread>
+#include <opencv2/opencv.hpp>
 
 
 ImgCreate::ImgCreate(QObject *parent) : QObject(parent)
@@ -10,7 +11,12 @@ ImgCreate::ImgCreate(QObject *parent) : QObject(parent)
 
 }
 
-void ImgCreate::launch()
+ImgCreate::~ImgCreate()
+{
+
+}
+
+void ImgCreate::doWork()
 {
     //cv::Mat image = cv::imread("/home/braingun/Downloads/test.jpg",true);
 
@@ -29,6 +35,6 @@ void ImgCreate::launch()
                 }
             }
             emit sendImg(image);
-            QThread::msleep(500);
+            QThread::msleep(10);
         }
 }

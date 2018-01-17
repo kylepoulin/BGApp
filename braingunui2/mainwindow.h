@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <opencv2/opencv.hpp>
 #include "cvimagewidget.h"
+#include "imgcreate.h"
+#include <QThread>
 
 namespace Ui {
 class MainWindow;
@@ -22,13 +24,16 @@ public slots:
 
 private slots:
     void on_actionStart_triggered();
+    void handleResults();
 
 signals:
-    void launchSys();
+    void operate();
 
 private:
     Ui::MainWindow *ui;
     CVImageWidget *imageWidget;
+    ImgCreate *imgcreate;
+    QThread *workerThread;
 };
 
 #endif // MAINWINDOW_H
